@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Parameters:
+  ACL:
+    Type: String
+    Description: Would you like to apply a canned access control list to grant predefined permissions?
+    # S3 Canned ACLs: https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl
+    AllowedValues:
+      - "PublicRead"
+        # public-read-write - (Bucket & Object): Owner gets FULL_CONTROL. The AllUsers group gets READ and WRITE access. *Not generally recommended*
+
+
+  BucketName: 
+    Type: String
+    Description: What name would you like to use for the S3 Bucket?
+    # Bucket Restrictions: https://docs.aws.amazon.com/AmazonS3/latest/dev/BucketRestrictions.html
+    AllowedPattern: "^([a-z0-9]{1}[a-z0-9-]{1,61}[a-z0-9]{1})$"
+    ConstraintDescription: "Bucket names must start and end with a letter or number, and be between 3 and 63 characters in length."
+
+Conditions:
+  hasACL:
+    !Not [!Equals [!Ref ACL, "None"]]
+Resources:
+
+  Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: !If [hasACL, !Ref ACL, !Ref "AWS::NoValue"]
+      BucketName: !Ref BucketName
+
+      
+
+Outputs:
+
+  BucketURL:
+    Value: !Join ['', ["https://", !GetAtt Bucket.DomainName]]
+    Export:
+      Name: !Join ['', [!Ref "AWS::StackName", "BucketURL"]]
+
+  BucketARN:
+    Value: !GetAtt Bucket.Arn
+    Export:
+      Name: !Join ['', [!Ref "AWS::StackName", "BucketARN"]]

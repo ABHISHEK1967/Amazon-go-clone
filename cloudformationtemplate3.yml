@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  AppendItemToListFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: sampleGetFunction
+      Handler: index.handler
+      Role: arn:aws:iam::824769648230:role/LabRole
+      Code:
+        ZipFile: !Sub |
+                const AWS = require('aws-sdk');
+                const docClient = new AWS.DynamoDB.DocumentClient();
+                const params = {
+                        TableName : 'products',
+                }
+                async function getProduct(){
+                try {
+                    let result = await docClient.scan(params).promise();
+                    return result;
+                } catch (err) {
+                return err;
+                }
+                }
+                exports.handler = async (event) => {
+                    try {
+                        const data = await getProduct()
+                    const response = {
+                    statusCode: 200,
+                    body: data,
+                        };
+                return response;
+                } catch (err) {
+                    return { error: err }
+                }};
+      Runtime: nodejs14.x

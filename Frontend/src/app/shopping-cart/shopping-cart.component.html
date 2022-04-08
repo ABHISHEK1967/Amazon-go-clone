@@ -1,0 +1,13 @@
+<div *ngIf="article !== undefined" class="p-fluid row" style="padding: 10px; align-items: center;">
+    <div class="col-6">{{ article.productName }}</div>
+  
+    <div class="col-2">
+      <p-inputNumber [(ngModel)]="count" (onInput)="countChanges()" [showButtons]="true" buttonLayout="vertical" spinnerMode="vertical" inputId="vertical"
+      decrementButtonClass="p-button-secondary" incrementButtonClass="p-button-secondary" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus">
+      </p-inputNumber>
+    </div>
+
+    <div class="col-4 p-5">
+      <button type="button" (click)="deleteObject()" class="btn btn-danger">X</button>
+    </div>
+  </div>

@@ -1,0 +1,40 @@
+<div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+  <div class="container">
+    <div id="scanner-container">
+
+    </div>
+    
+    
+    <div class="controls">
+      <button class="btn btn-primary" (click)="clearCart()">Clear cart</button>
+      <div class=" dot" (click)="signOut()">
+        <i class="pi pi-sign-out"></i>
+        </div>
+    </div>
+    
+    <div class="shopping-cart">
+      <span *ngIf="items.length === 0 else shoppingCartItems"
+        >Shopping cart is empty</span
+      >
+      <ng-template #shoppingCartItems>
+        <app-shopping-cart
+          *ngFor="let articleAndCount of items"
+          [article]="articleAndCount[0]"
+          [count]="articleAndCount[1]"
+          (deleteItem)="deleteItem($event)"
+          (countItem)="countItem($event)"
+        >
+        </app-shopping-cart>
+    
+        <div class="shopping-cart-total">
+          Total: {{ totalPrice }} USD
+        </div>
+      </ng-template>
+      <div class="mt-2">
+        <button class="btn btn-primary" (click)="checkout()">Checkout</button>
+      </div>
+    </div>
+  
+  </div>

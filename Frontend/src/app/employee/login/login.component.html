@@ -1,0 +1,33 @@
+<div class="container mt-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+            <div class="card px-5 py-5" id="form1">
+              
+                <span class="form-outline  p-float-label py-4 mx-5">
+                    <h2>Customer Login</h2>
+                </span>
+
+                <div class="mx-2">
+                    <img width="250" height="200" src="assets/image/employee.png"/>
+                </div>
+               
+                <span class="form-outline  p-float-label py-4">
+                    <input id="float-input" type="text" pInputText class="form-control" [(ngModel)]="email">
+                    <label class="form-label" for="float-input">Email</label>
+                </span>
+
+                <span class="form-outline  p-float-label py-4">
+                    <input id="float-password" type="password" pPassword class="form-control" [(ngModel)]="password">
+                    <label class="form-label" for="float-password">Password</label>
+                </span>
+
+                <!-- Submit button -->
+                <button type="button" (click)="signIn()" class="btn btn-primary btn-block mb-4">Sign in</button>
+                <!-- Register buttons -->
+                <div class="text-center">
+                    <p>Not a member? <a routerLink="/employee/register" routerLinkActive="active">Register</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
