@@ -1,0 +1,20 @@
+<div class="container mt-5">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+      <div class="card px-5 py-2" id="form1">
+        <div class="mx-2 py-5">
+          <h3>
+            Upload Purchase Order
+          </h3>
+        </div>
+        <p-fileUpload
+          name="picture" [customUpload]="true" (uploadHandler)="onUpload($event)" (onRemove)="clear()"
+
+        ></p-fileUpload>
+      </div>
+    </div>
+  </div>
+  <div class="corner dot" (click)="signOut()">
+    <i class="pi pi-sign-out"></i>
+  </div>
+</div>
