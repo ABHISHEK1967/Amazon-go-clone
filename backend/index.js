@@ -25,18 +25,18 @@ app.use(
 );
 
 const lambda = new AWS.Lambda({
-  accessKeyId: "ASIA4ACA2CZTOJLBTROW",
-  secretAccessKey: "/JjdPNKkRP/A3YHceoUq3s5L0u65zspKOJvS9XSM",
+  accessKeyId: "<ACCESS_ID>",
+  secretAccessKey: "<ACCESS_KEY>",
   sessionToken:
-    "FwoGZXIvYXdzECUaDLCU4ZAsM6qSyoCwryLAAfdhVHTdr4ze3nnQ44nRh4C4oGok+w0F5tYvrKQNs4Y40s00K+L5udMnNVgBnZkJ9bZU9EoNAgbd+IDfSmruQ9cw2aqLAY9fOUVCHXwm3Ut9zCemlXTgauzM/cZ6h48tjQFHH9IdWn9ZtLR/mIB9eb5VXCJmvggQbklS3o3mf2sa59KuAokFBNby9LPw0Kf1s2svuYruOF4aY4GxkRxfWUeOWAuwbGNyJR7AedYtcM4a3wA2VU9mkYZbI8d63xelVCjV2beSBjItKtOF5a2O/jrcs0b76waupXagi6cjaIcC/e364NMIiVYIUarBo4DarQSneZzT",
+    "<SESSION_TOKEN>",
   region: "us-east-1",
 });
 
 const s3 = new AWS.S3({
-  accessKeyId: "ASIA4ACA2CZTOJLBTROW",
-  secretAccessKey: "/JjdPNKkRP/A3YHceoUq3s5L0u65zspKOJvS9XSM",
+  accessKeyId: "<ACCESS_ID>W",
+  secretAccessKey: "<ACCESS_KEY>",
   sessionToken:
-    "FwoGZXIvYXdzECUaDLCU4ZAsM6qSyoCwryLAAfdhVHTdr4ze3nnQ44nRh4C4oGok+w0F5tYvrKQNs4Y40s00K+L5udMnNVgBnZkJ9bZU9EoNAgbd+IDfSmruQ9cw2aqLAY9fOUVCHXwm3Ut9zCemlXTgauzM/cZ6h48tjQFHH9IdWn9ZtLR/mIB9eb5VXCJmvggQbklS3o3mf2sa59KuAokFBNby9LPw0Kf1s2svuYruOF4aY4GxkRxfWUeOWAuwbGNyJR7AedYtcM4a3wA2VU9mkYZbI8d63xelVCjV2beSBjItKtOF5a2O/jrcs0b76waupXagi6cjaIcC/e364NMIiVYIUarBo4DarQSneZzT",
+    "<SESSION_TOKEN>",
   region: "us-east-1",
 });
 
